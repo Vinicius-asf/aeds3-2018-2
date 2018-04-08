@@ -1,10 +1,11 @@
-#include "grafo.h"
+#include "grafo2.h"
 
 int main (){
-    vetor v;
-    inicializevetor(v,1,1);
-    inicializevetor(v,2,2);
-
-    print("%d : %d",getValor(v,1),getValor(v,2));
-    //createElo(v,1,2,2);
+    graphL_pont grafo = createGraphL(3);
+    addAresta(grafo,0,1);
+    addAresta(grafo,0,2);
+    addAresta(grafo,1,2);
+    printGraphL(grafo);
+    destroyGraphL(grafo);  
+    return 0;
 }
