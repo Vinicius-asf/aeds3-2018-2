@@ -24,7 +24,7 @@ listadj_noh_pont createNoh(int vert);
 
 graphL_pont createGraphL(int nv);
 
-void addAresta(graphL_obj *graph, int source, int destination);
+void addAresta(graphL_pont graph, int source, int destination);
 
 void printGraphL(graphL_pont graph);
 

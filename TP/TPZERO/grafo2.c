@@ -21,7 +21,7 @@ graphL_pont createGraphL(int nv){
     return graphL;
 }
 
-void addAresta(graphL_obj *graph, int source, int destination){
+void addAresta(graphL_pont graph, int source, int destination){
     listadj_noh_pont novoNoh = createNoh(destination);
     novoNoh->prox = graph->arrayList[source].header;
     graph->arrayList[source].header = novoNoh;
