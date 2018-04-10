@@ -47,7 +47,7 @@ int main (){
     i = 0;
     visitingPerson(list,grafo/*, grafo->arrayList[id] */,id-1,&i);
 
-    printf("\nTotal:%d",i);
+    printf("%d\n",i);
     //printList(list, pessoa);
     
     destroyList(list);
