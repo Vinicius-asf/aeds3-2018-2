@@ -9,7 +9,7 @@ listadj_noh_pont createNoh(int vert)
 }
 
 graphL_pont createGraphL(int nv){
-    int i;
+    int i=0;
     graphL_pont graphL = (graphL_pont)malloc(sizeof(graphL_obj));
     graphL->nvertices = nv;
 
@@ -34,7 +34,8 @@ void addAresta(graphL_pont graph, int source, int destination){
 }
 
 void printGraphL(graphL_pont graph){
-    int i;
+    printf("\nGrafo:");
+    int i=0;
     for (i=0; i<graph->nvertices; i++){
         listadj_noh_pont auxpont = graph->arrayList[i].header;
         printf("\n%d: ",i);
@@ -53,7 +54,7 @@ void destroyNoh(listadj_noh_pont noh){
 void destroyGraphL(graphL_pont graph){
     if(graph){
         if(graph->arrayList){
-            int v;
+            int v=0;
             for(v=0;v < graph->nvertices; v++){
                 listadj_noh_pont auxpont = graph->arrayList[v].header;
                 while(auxpont){

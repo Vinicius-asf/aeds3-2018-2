@@ -11,12 +11,20 @@ void createPessoa(pessoa_pont lista, int id, int age){
     (lista+id)->visitado=0;
 }
 
-void Visited(pessoa_pont list, int id){
-    (list+id)->visitado=1;
+void Visited(pessoa_pont person, int id){
+    (person+id)->visitado=1;
 }
 
 void destroyList(pessoa_pont list){
     free(list);
+}
+
+void printList(pessoa_pont lista, int tam){
+    int i;
+    printf("\nLista de pessoas:\n");
+    for (i=0; i<tam; i++){
+        printf("%d:%d|%d ",i , (lista+i)->idade, (lista+i)->visitado);
+    }
 }
 
 
