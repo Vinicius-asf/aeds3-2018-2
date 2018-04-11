@@ -1,0 +1,1 @@
+for i in {teste_1.txt,teste_2.txt,teste_3.txt,teste_4.txt,teste_5.txt,teste_6.txt,teste_7.txt,teste_8.txt,teste_9.txt,teste_10.txt};do for a in $(seq 1 10); do time ./tp0 < testes/entradas/$i; done done

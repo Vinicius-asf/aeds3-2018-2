@@ -1,21 +1,16 @@
 #include "musica.h"
 #include "grafo2.h"
 
-void visitingPerson(pessoa_pont lista, graphL_pont grafo/* , listadj_obj gflista */, int id, int* contador){
-    if(lista[id].visitado==0){
+void visitingPerson(pessoa_pont lista, graphL_pont grafo, int id, int* contador){ // função que percorre o grafo
+    if(lista[id].visitado==0){ // caso a pessoa ja escutou a musica, ela é ignorada
         Visited(lista, id);
-        if(lista[id].idade<35){
-            *contador+=1;
-            //int i;
-            listadj_noh_pont auxnoh = grafo->arrayList[id].header;
+        if(lista[id].idade<35){ // caso a pessoa seja menor de 35 anos, ela recomenda a musica
+            *contador+=1;       // ou seja, passa essa função para os outros nós com quem esta ligada
+            listadj_noh_pont auxnoh = grafo->arrayList[id].header; // aponta para o cabeçaria da lista de relações da pessoa referenciada
             while(auxnoh){
                 visitingPerson(lista,grafo,auxnoh->vertice,contador);
                 auxnoh = auxnoh->prox;
             }
-            /* for(i = 0; i<grafo->arrayList[id].nmembros; i++){
-                visitingPerson(lista,grafo,auxnoh->vertice,contador);
-                auxnoh = auxnoh->prox;
-            } */   
         }
     }
 }
