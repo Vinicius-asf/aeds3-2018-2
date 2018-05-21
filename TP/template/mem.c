@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <inttypes.h>
 #include "mem.h"
 
 #define BUCKETS 10240
@@ -35,7 +36,7 @@ void _mathias_memory_init() {
 }
 
 unsigned int _mathias_memory_get_bucket(void* ptr) {
-    unsigned long long n = (unsigned long long) ptr;
+    uintptr_t n = (uintptr_t) ptr;
     return (unsigned int)(n % BUCKETS);
 }
 
@@ -79,7 +80,7 @@ void* mathias_malloc(unsigned int size) {
     if (ptr != NULL) {
         mathias_memory_using += size;
     } else {
-        fprintf(stderr, "NÃO FOI POSSÍVEL ALOCAR `%u` BYTES DE MEMÓRIA.\n");
+        fprintf(stderr, "NÃO FOI POSSÍVEL ALOCAR `%u` BYTES DE MEMÓRIA.\n", size);
         exit(1);
     }
 

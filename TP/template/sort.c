@@ -40,14 +40,14 @@
 // erroneamente, a verificação também estará errada! 
 int a_menor_que_b(char* a, char* b, int len) {
     int i = 0;
-    printf("%s%s", a, b);
+    //printf("%s%s", a, b);
     i = strcmp(a,b);
     if(i < 0) {
-        printf("A menor que B\n");
+        //printf("A menor que B\n");
         return 0;
     }
     else {
-        printf("B menor que A\n");
+        //printf("B menor que A\n");
         return 1;
     }
 }
@@ -60,7 +60,7 @@ int a_menor_que_b(char* a, char* b, int len) {
 // escrevê-los em `output_file`, usando memória menor ou igual a `memory`. Lembre-se
 // de fechar todos os arquivos que você usar por aqui!!
 void external_sort(const char* input_file, const char* output_file, unsigned int memory) {
-    printf("Inicializando os arquivos\n");
+    //printf("Inicializando os arquivos\n");
     
     int crt_blk = 0; //controle de criação de blocos
     int limit = 0; //tamanho das linhas
@@ -76,7 +76,7 @@ void external_sort(const char* input_file, const char* output_file, unsigned int
     input = fopen(input_file, "r");
     fscanf(input, "%d\n", &limit);
     //fgets(&limit, 5, input);
-    printf("Tamanho das linhas: %d\n", limit);
+    //printf("Tamanho das linhas: %d\n", limit);
     
     FILE *aux0;
     FILE *aux1;
@@ -91,7 +91,7 @@ void external_sort(const char* input_file, const char* output_file, unsigned int
     char *strA = (char*)mathias_malloc(sizeof(char)*limit + 2);
     char *strB = (char*)mathias_malloc(sizeof(char)*limit + 2);
     
-    printf("Iniciando a criação dos blocos iniciais\n");
+    //printf("Iniciando a criação dos blocos iniciais\n");
 
     while(1){
         fgets(strA, limit+3, input);
@@ -133,16 +133,16 @@ void external_sort(const char* input_file, const char* output_file, unsigned int
     int blk = 2; //controle de intercalação
     int blk_stage = 1;//fase de intercalação
 
-    printf("Tamanho do arquivo: %d\n", filesize);
-    printf("Iniciando etapas de intercalação\n");
+    //printf("Tamanho do arquivo: %d\n", filesize);
+    //printf("Iniciando etapas de intercalação\n");
 
     int blkast1 = 0; // indicador de tamanho de bloco 1
     int blkast2 = 0; // indicador de tamanho de bloco 2
     int aux_size = 0;
     crt_blk = 0;// 0 - arquivo 0 ou 2; 1 - arquivo 1 ou 3
 
-    while(blk<9){
-        printf("Estagio: %d, Bloco: %d\n", blk_stage, blk);
+    while(blk<filesize){
+        // printf("Estagio: %d, Bloco: %d\n", blk_stage, blk);
         if(blk_stage%2!=0){ //etapa ímpar
             aux0 = fopen(auxfile0, "r");
             aux1 = fopen(auxfile1, "r");
@@ -150,7 +150,7 @@ void external_sort(const char* input_file, const char* output_file, unsigned int
             aux3 = fopen(auxfile3, "w");
             while (aux_size < filesize){
                 if (blkast1 >= blk && blkast2 >= blk){ //
-                    printf("acabou os dois blocos\n");
+                    // printf("acabou os dois blocos\n");
                     if(crt_blk == 0){
                         crt_blk = 1;
                     }
@@ -161,7 +161,7 @@ void external_sort(const char* input_file, const char* output_file, unsigned int
                     blkast2 = 0;
                 }
                 else if (blkast1 >= blk || fgets(strA, limit+3, aux0) == NULL){ // 
-                printf("acabou o bloco de 0\n");
+                    // printf("acabou o bloco de 0\n");
                     //while(blkast2<blk){
                         fgets(strB, limit+3, aux1);
                         if(crt_blk == 0){
@@ -176,7 +176,7 @@ void external_sort(const char* input_file, const char* output_file, unsigned int
                     //}
                 }
                 else if (blkast2 >= blk || fgets(strB, limit+3, aux1) == NULL){// 
-                    printf("acabou o bloco de 1\n");
+                    // printf("acabou o bloco de 1\n");
                     //while(blkast1<blk){
                         //fgets(strA, limit+3, aux0);
                         if(crt_blk == 0){
@@ -228,7 +228,7 @@ void external_sort(const char* input_file, const char* output_file, unsigned int
             aux3 = fopen(auxfile3, "r");
             while (aux_size < filesize){
                 if (blkast1 >= blk && blkast2 >= blk){ //
-                    printf("acabou os dois blocos\n");
+                    // printf("acabou os dois blocos\n");
                     if(crt_blk == 0){
                         crt_blk = 1;
                     }
@@ -239,7 +239,7 @@ void external_sort(const char* input_file, const char* output_file, unsigned int
                     blkast2 = 0;
                 }
                 else if (blkast1 >= blk || fgets(strA, limit+3, aux2) == NULL){ // 
-                    printf("acabou o bloco de 0\n");
+                    // printf("acabou o bloco de 0\n");
                     //while(blkast2<blk){
                         fgets(strB, limit+3, aux3);
                         if(crt_blk == 0){
@@ -254,7 +254,7 @@ void external_sort(const char* input_file, const char* output_file, unsigned int
                     //}
                 }
                 else if (blkast2 >= blk || fgets(strB, limit+3, aux3) == NULL){// 
-                    printf("acabou o bloco de 1\n");
+                    // printf("acabou o bloco de 1\n");
                     //while(blkast1<blk){
                         //fgets(strA, limit+3, aux2);
                         if(crt_blk == 0){
@@ -310,18 +310,20 @@ void external_sort(const char* input_file, const char* output_file, unsigned int
         blkast2 = 0; 
         crt_blk = 0;      
     }
-    if(blk_stage%2!=0){
+    if(blk_stage%2==0){
         aux0 = fopen(auxfile0, "r");
     }
     else{
         aux0 = fopen(auxfile2, "r");
     }
-    printf("Fim do processo\n");
+    // printf("Fim do processo\n");
     FILE *output = fopen(output_file, "w");
     fprintf(output, "%d\n",limit);
-    for(filesize; filesize>0; filesize--){
+    //for(filesize; filesize>0; filesize--){
+    while(filesize>0){
         fgets(strB, limit+3, aux0);
         fputs(strB,output);
+        filesize--;
     }
     fclose(output);
     fclose(aux0);
