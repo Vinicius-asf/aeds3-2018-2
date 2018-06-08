@@ -44,12 +44,12 @@ int** createLvnshMatrix(int m, int n){
         lvnsh[0][j] = j;
     }
 
-    for (i=0; i<m+1;i++){
+/*     for (i=0; i<m+1;i++){
         for (j=0; j<n+1; j++){
             printf("%d|",lvnsh[i][j]);
         }
         printf("\n");
-    }
+    } */
     return lvnsh;
 }
 
@@ -74,7 +74,7 @@ int levenshteinNumber(char query[], char test[]){
     int** lvnsh = createLvnshMatrix(m,n);
 
     for (i=1;i < m+1; i++){
-        printf("estagio: %d\n", i);
+        //printf("estagio: %d\n", i);
         for (j=1; j < n+1; j++){
             if(test[j-1] == query[i-1]){
                 cost = 0;
