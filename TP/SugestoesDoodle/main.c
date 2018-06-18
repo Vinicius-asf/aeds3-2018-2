@@ -1,5 +1,6 @@
 #include "lvnsh.h"
 #include "wordtape.h"
+#include <time.h>
 
 int main(int argc, char const *argv[])
 {
@@ -45,13 +46,16 @@ int main(int argc, char const *argv[])
     }
 
     qsort(tape, nWord, sizeof(word), comparaPalavra);
-
+    //FILE *output;
+    //output = fopen("output.txt","r");
     for(i = nWord-wordFound; i<=nWord ;i++){
+        //fputs(tape[i].word,output);
         printf("%s\n",tape[i].word);
     }
-
+    //fclose(output);
     //printf("Palavra: %s, Trocas: %u, Final: %d\n", test, nWord, result);
 
     free(tape);
+    //printf("%li\n",clock());
     return 0;
 }
